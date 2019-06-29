@@ -84,14 +84,20 @@ public class QuartzJob implements Job {
 							try{
 							Map<String, Object> params = new HashMap<String, Object>(0);
 							String result=HttpRequest.httpClientGet("http://"+clientip+":"+PublicConst.CLIENTPORT+"/getclientstatus", params);
-							if("success".equals(result)){
+							log.info("IP:" + tc.getClientip() + "return the status *************" + result);
+							if(result.indexOf("success") > -1 ){
+								log.info("IP:" + tc.getClientip() + "******* status is online **************");
 								if(tc.getStatus()!=0){
+									log.info("IP:" + tc.getClientip() + "*******status db status is offline, update to online**************");
+									log.info("【IP:"+tc.getClientip()+"】检查客户端正常！");
 									tc.setStatus(0);
 									QueueListener.listen_Clientlist.set(i, tc);
 									Query query = session.createQuery("update TestClient t set t.status =0  where id="+tc.getId());
 									query.executeUpdate();
+									log.info("IP:" + tc.getClientip() + "******* update status to online successful **************");
 								}
 							}else{
+								log.error("IP:" + tc.getClientip() + "******* status is offline **************");
 								log.error("【IP:"+tc.getClientip()+"】检查客户端异常！");
 								if(tc.getStatus()!=1){
 									tc.setStatus(1);
@@ -99,10 +105,12 @@ public class QuartzJob implements Job {
 									Query query = session.createQuery("update TestClient t set t.status =1  where id="+tc.getId());
 									query.executeUpdate();
 									log.error("【IP:"+tc.getClientip()+"】客户端异常，修改客户端状态！");
+									log.error("IP:" + tc.getClientip() + "******* update status to offline successful **************");
 								}
 							}
 							}catch (RuntimeException e) {
 								log.error(e);
+								log.error("IP:" + tc.getClientip() + "check client status remote exception");
 								log.error("【IP:"+tc.getClientip()+"】检查客户端异常(RemoteException)！");
 								if(tc.getStatus()!=1){
 									tc.setStatus(1);
@@ -110,6 +118,7 @@ public class QuartzJob implements Job {
 									Query query = session.createQuery("update TestClient t set t.status =1  where id="+tc.getId());
 									query.executeUpdate();
 									log.error("【IP:"+tc.getClientip()+"】客户端异常(RemoteException)，修改客户端状态！");
+									log.error("IP:" + tc.getClientip() + "check client status exception and update status to online");
 								}
 								break;
 							}

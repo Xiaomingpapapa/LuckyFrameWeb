@@ -32,6 +32,7 @@ public class TestCasedetail implements java.io.Serializable {
 	private String casestatus;
 	private String casestatus_str;
 	private String  projName;
+	private String imgname;
 
 	private String startDate;
 	private String endDate;
@@ -161,6 +162,11 @@ public class TestCasedetail implements java.io.Serializable {
 		this.casestatus = casestatus;
 	}
 
-	
+	public String getImgname() {
+		return imgname;
+	}
 
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
+	}
 }

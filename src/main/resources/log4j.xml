@@ -13,7 +13,7 @@
 	</appender>
 	
 	<appender name="log" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="/logs/luckyframe/log"/>
+		<param name="File" value="C:/opt/tomcat/logs/luckyframe/log"/>
 		<param name="DatePattern" value="'-'yyyy-MM-dd'.log'"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%c] - %m%n"/>
@@ -24,7 +24,7 @@
 		</filter>
 	</appender>
 	<appender name="showSql" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="/logs/luckyframe/sql"/>
+		<param name="File" value="C:/opt/tomcat/logs/luckyframe/sql"/>
 		<param name="DatePattern" value="'-'yyyy-MM-dd'.log'"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%c] - %m%n"/>
@@ -36,7 +36,7 @@
 	</appender>
 	
 	<appender name="err" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="/logs/luckyframe/err"/>
+		<param name="File" value="C:/opt/tomcat/logs/luckyframe/err"/>
 		<param name="DatePattern" value="'-'yyyy-MM-dd'.err'"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p] - %l:%m%n"/>

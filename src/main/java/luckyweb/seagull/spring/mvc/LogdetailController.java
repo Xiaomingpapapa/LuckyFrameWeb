@@ -11,10 +11,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +38,8 @@ import luckyweb.seagull.spring.service.TestTastExcuteService;
 import luckyweb.seagull.util.DateLib;
 import luckyweb.seagull.util.StrLib;
 import luckyweb.seagull.util.client.HttpRequest;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * =================================================================
@@ -259,6 +258,47 @@ public class LogdetailController {
 			e.printStackTrace();
 		}
 
+	}
+
+	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
+	public void uploadScreenShot(MultipartFile imageFile, String filename, HttpServletRequest req, HttpServletResponse rsp) throws Exception {
+		if (null != imageFile) {
+			System.out.println(filename);
+			//根据图片创建的年，月，日生成对应的文件夹存放
+			Calendar calendar = Calendar.getInstance();
+			String parentPath = req.getServletContext().getRealPath("/pic/test_upload/");
+			System.out.println("parentPath" + parentPath + "**********");
+			StringBuilder filePathBuilder = new StringBuilder();
+			filePathBuilder.append(parentPath);
+
+			StringBuilder dateBuilder = new StringBuilder();
+			dateBuilder.append(File.separator).append(calendar.get(Calendar.YEAR));
+			dateBuilder.append(File.separator).append(calendar.get(Calendar.MONTH) + 1);
+			dateBuilder.append(File.separator).append(calendar.get(Calendar.DAY_OF_MONTH));
+
+			filePathBuilder.append(dateBuilder.toString());
+
+			//如何父文件夹不存在则创建
+			File parentDir = new File(filePathBuilder.toString());
+			if (!parentDir.exists() && !parentDir.isDirectory()) {
+				parentDir.mkdirs();
+			}
+			File file = new File(filePathBuilder.toString(), filename);
+
+			rsp.setCharacterEncoding("utf-8");
+			try {
+				imageFile.transferTo(file);
+				//生成带日期路径的文件名返回给客户端
+				StringBuilder filePathNameBuilder = new StringBuilder();
+				filePathNameBuilder.append(calendar.get(Calendar.YEAR));
+				filePathNameBuilder.append("/").append(calendar.get(Calendar.MONTH) + 1);
+				filePathNameBuilder.append("/").append(calendar.get(Calendar.DAY_OF_MONTH)).append("/");
+				String filePathName = filePathNameBuilder.append(filename).toString();
+				rsp.getWriter().write(filePathName);
+			} catch (Exception e) {
+				rsp.getWriter().write("failure");
+			}
+		}
 	}
 
 	/**

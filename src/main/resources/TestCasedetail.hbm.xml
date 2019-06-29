@@ -26,5 +26,8 @@
 		<property name="casestatus" type="java.lang.String">
 			<column name="CASESTATUS" length="2" not-null="true" />
 		</property>
+		<property name="imgname" type="java.lang.String">
+			<column name="imgname" length="255" not-null="false" />
+		</property>
 	</class>
 </hibernate-mapping>
