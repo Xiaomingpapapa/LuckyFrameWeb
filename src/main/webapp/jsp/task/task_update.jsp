@@ -131,6 +131,18 @@
 						</c:forEach>
 					</sf:select></td>
 				</tr>
+				<tr id="scriptserverbaseurl" style="display: none">
+					<td width="140" height="32">脚本服务BaseUrl</td>
+					<td height="32" colspan="3"><sf:input path="baseUrl"
+														  id="baseUrl" cssClass="easyui-validatebox" required="false"/></td>
+				</tr>
+				<tr id="scriptplatformtype" style="display: none">
+					<td height="30" align="left">平台类型</td>
+					<td height="30" colspan="3">
+						<sf:radiobutton	path="platformType" id="platformType" value="0" /> Android&nbsp;&nbsp;&nbsp;&nbsp;
+						<sf:radiobutton path="platformType" id="platformType" value="1" /> IOS
+					</td>
+				</tr>
 				<tr id="testlinkplan">
 					<td height="30" align="left" valign="top">计划名（testlink中）</td>
 					<td height="30" colspan="3"><sf:textarea cols="50" rows="5"
@@ -383,8 +395,16 @@
         if(isSend=='3'){
             document.getElementById('ehiappfileselect').style.display='block';
             document.getElementById('ehiappfileselect').style.display = 'table-row'
+
+			document.getElementById('scriptserverbaseurl').style.display='block';
+			document.getElementById('scriptserverbaseurl').style.display = 'table-row'
+
+			document.getElementById('scriptplatformtype').style.display='block';
+			document.getElementById('scriptplatformtype').style.display = 'table-row'
         }else{
             document.getElementById('ehiappfileselect').style.display='none';
+			document.getElementById('scriptserverbaseurl').style.display='none';
+			document.getElementById('scriptplatformtype').style.display='none';
         }
 
         if(isSend=='1'){

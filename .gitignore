@@ -1,2 +1,8 @@
 /target/
 /src/main/resources/hibernate.cfg.xml
+# IDE Project config
+.settings/
+.idea/
+.project
+*.iml
+*.classpath

@@ -4,7 +4,7 @@
 <!-- Generated 2015-4-21 15:55:06 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping package="luckyweb.seagull.spring.entity">
 	<class name="SecondarySector" table="qa_secondarysector"
-		schema="luckyframedb">
+		schema="luckyframedemo">
 		<id name="sectorid" type="java.lang.Integer">
 			<column name="sectorid" precision="22" scale="0" />
 			<generator class="identity"/>

@@ -24,6 +24,7 @@ public class TestJobs implements java.io.Serializable {
     private int id;
     private String taskName;
     private String startDate;
+
     private String startTime;
     private String endDate;
     private String endTime;
@@ -107,6 +108,17 @@ public class TestJobs implements java.io.Serializable {
     // 发送条件
     private Integer sendCondition;
     private String testngFile;
+
+    /**
+     * 脚本服务 baseUrl
+     */
+    private String baseUrl;
+
+    /**
+     * 脚本运行平台 0:android; 1:ios
+     */
+    private Integer platformType;
+
 
     public String getClientpath() {
         return clientpath;
@@ -413,5 +425,21 @@ public class TestJobs implements java.io.Serializable {
 
     public void setTestngFile(String testngFile) {
         this.testngFile = testngFile;
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    public Integer getPlatformType() {
+        return platformType;
+    }
+
+    public void setPlatformType(Integer platformType) {
+        this.platformType = platformType;
     }
 }
