@@ -123,7 +123,8 @@ public class TestTastExcuteServiceImpl implements TestTastExcuteService {
 
 	@Override
 	public int findRows(TestTaskexcute tast ) {
-		String hql="select count(*) from TestTaskexcute"+where(tast);
+//		String hql="select count(*) from TestTaskexcute"+where(tast);
+		String hql="select count(*) from TestTaskexcute";
 		return tastExcuteDao.findRows(hql,tast);
 	}
 
