@@ -318,7 +318,7 @@ public class LogdetailController {
 		String startdate = (String) tastExcuteService.getTopTaskDate().get(0);
 		int days = DateLib.getDays(startdate);
 		taskdata[0] = String.valueOf(days);
-		int taskcount = tastExcuteService.findRows(task);
+		int taskcount = tastExcuteService.findTotalRows(task);
 		taskdata[1] = String.valueOf(taskcount);
 
 		TestCasedetail caseDetail = new TestCasedetail();

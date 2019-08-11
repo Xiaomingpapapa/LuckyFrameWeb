@@ -52,12 +52,18 @@ public interface TestTastExcuteService {
 	 * @return
 	 */
 	public List findByPage( final Object value,final int offset, final int pageSize);
+
+	/**
+	 * 任务执行记录总条数
+	 * @return
+	 */
+	public int findTotalRows(TestTaskexcute jobs);
 	/**
 	 * 任务执行记录分页条数
 	 * @param jobs
 	 * @return
 	 */
-	public int findRows(TestTaskexcute jobs ) ;
+	public int findRows(TestTaskexcute jobs) ;
 	/**
 	 * 任务执行记录列表
 	 * @param param
