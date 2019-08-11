@@ -78,8 +78,7 @@
 							<sf:radiobutton path="extype" id="extype" value="0" onclick="isShow5('0')" /> 接口自动化&nbsp;&nbsp;&nbsp;&nbsp;
 							<sf:radiobutton	path="extype" id="extype" value="1" onclick="isShow5('1')" /> Web自动化&nbsp;&nbsp;&nbsp;&nbsp;
 							<sf:radiobutton	path="extype" id="extype" value="2" onclick="isShow5('2')" /> 移动自动化&nbsp;&nbsp;&nbsp;&nbsp;
-							<sf:radiobutton path="extype" id="extype" value="3" onclick="isShow5('3')" /> app自动化&nbsp;&nbsp;&nbsp;&nbsp;
-							<sf:radiobutton path="extype" id="extype" value="4" onclick="isShow5('4')" /> 自定义脚本自动化
+							<sf:radiobutton path="extype" id="extype" value="3" onclick="isShow5('3')" /> 自定义脚本自动化
 						</td>
 					</tr>
 					<tr id="uiclientipdis" style="display: none">
@@ -123,7 +122,8 @@
 						<td height="30" align="left">平台类型</td>
 						<td height="30" colspan="3">
 							<sf:radiobutton	path="platformType" id="platformType" value="0" /> Android&nbsp;&nbsp;&nbsp;&nbsp;
-							<sf:radiobutton path="platformType" id="platformType" value="1" /> IOS
+							<sf:radiobutton path="platformType" id="platformType" value="1" /> IOS&nbsp;&nbsp;&nbsp;&nbsp;
+							<sf:radiobutton path="platformType" id="platformType" value="2" /> Web
 						</td>
 					</tr>
 					<tr id="testlinkplan">
